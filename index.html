@@ -20,10 +20,20 @@
 <h1>Practica</h1>
 <!-- Container for the visualization -->
 <div id="vis1"></div>
+<div id="vis11"></div>
+<div id="vis12"></div>
 <div id="vis2"></div>
+<div id="vis21"></div>
+<div id="vis22"></div>
 <div id="vis3"></div>
+<div id="vis31"></div>
+<div id="vis32"></div>
 <div id="vis4"></div>
+<div id="vis41"></div>
+<div id="vis42"></div>
 <div id="vis5"></div>
+<div id="vis51"></div>
+<div id="vis52"></div>
 
 <script>
     // Assign the specification to a local variable vlSpec.
@@ -49,6 +59,34 @@
     // Embed the visualization in the container with id `vis`
     vegaEmbed('#vis1', pregun1);
 
+    const pregun11 = {
+        "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+        "data": {"url": "https://raw.githubusercontent.com/ElDavidLasso/PracticaB2PROG/master/data/tipoCombus.csv"},
+        "mark": {"type": "circle"},
+        "encoding": {
+            "x": {
+                "field": "cantidad",
+                "title": "Cantidad"
+            },
+            "y": {"field": "combustible",
+                "type": "nominal",
+                "title": "Combustibles"
+            },
+            "color": {"field": "clase",
+                "type": "nominal",
+                "title": "Clases"
+            }
+        }
+    };
+    // Embed the visualization in the container with id `vis`
+    vegaEmbed('#vis11', pregun11);
+
+    const pregun12 = {
+        "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+        "data": {"url": "https://raw.githubusercontent.com/ElDavidLasso/PracticaB2PROG/master/data/tipoCombus.csv"},
+    };
+    // Embed the visualization in the container with id `vis`
+    vegaEmbed('#vis12', pregun12);
     const pregun2 = {
         "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
         "data": {"url": "https://raw.githubusercontent.com/ElDavidLasso/PracticaB2PROG/master/data/sevicioVehi.csv"},
@@ -70,37 +108,70 @@
         }
     };
     vegaEmbed('#vis2', pregun2);
+    const pregun21 = {
+        "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+        "data": {"url": "https://raw.githubusercontent.com/ElDavidLasso/PracticaB2PROG/master/data/sevicioVehi.csv"},
+        "mark": {"type": "circle", "cornerRadiusTopLeft": 3, "cornerRadiusTopRight": 3},
+        "encoding": {
+            "x": {"field": "servicio",
+                "type": "nominal",
+                "title": "Servicio"
+            },
+            "y": {"aggregate":"sum",
+                "field": "cantidad",
+                "title": "Cantidad",
+            },
+
+            "color": {"field": "clase",
+                "type": "nominal",
+                "title": "Clases"
+            }
+        }
+    };
+    vegaEmbed('#vis21', pregun21);
     const pregun3 = {
         "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
-        "width": "container",
-        "height": 250,
         "data": {"url": "https://raw.githubusercontent.com/ElDavidLasso/PracticaB2PROG/master/data/distriVehi.csv"},
-        "mark": "bar",
+        "mark": "line",
         "encoding": {
             "x": {"field": "servicio", "type": "nominal","title": "Servicio"},
-            "y": {"aggregate": "sum", "field": "cantidad","title": "Cantidad"}
+            "y": {"aggregate":"sum","field": "cantidad","type":"quantitative","title": "Cantidad"}
         }
     };
     vegaEmbed('#vis3', pregun3);
+    const pregun31 = {
+        "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+        "data": {"url": "https://raw.githubusercontent.com/ElDavidLasso/PracticaB2PROG/master/data/distriVehi.csv"},
+        "mark": "point",
+        "encoding": {
+            "x": {"field": "servicio", "type": "nominal","title": "Servicio"},
+            "y": {"aggregate":"sum","field": "cantidad","type":"quantitative","title": "Cantidad"}
+        }
+    };
+    vegaEmbed('#vis31', pregun31);
+
     const pregun4 = {
             "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
-            "width": "container",
             "data": {"url": "https://raw.githubusercontent.com/ElDavidLasso/PracticaB2PROG/master/data/motos2008.csv"},
-            "mark": "bar",
-            "encoding": {
-                "x": {
-                    "field": "provincia",
-                    "type": "nominal",
-                    "title": "Provincia"
-                },
-                "y": {
-                    "aggregate": "sum",
-                    "field": "cantidad",
-                    "title": "Cantidad"
-                }
-            }
+        "mark": "line",
+        "encoding": {
+            "x": {"field": "provincia", "type": "nominal","title": "provincia"},
+            "y": {"aggregate":"sum","field": "cantidad","type":"quantitative","title": "Cantidad"}
+        }
         };
     vegaEmbed('#vis4', pregun4);
+
+    const pregun41 = {
+        "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+        "data": {"url": "https://raw.githubusercontent.com/ElDavidLasso/PracticaB2PROG/master/data/motos2008.csv"},
+        "values":{"cantidad":"cantidad"},
+        "mark": "point",
+        "encoding": {
+            "x": {"field": "provincia", "type": "nominal","title": "provincia"},
+            "y": {"aggregate":"sum","field": "cantidad","type":"quantitative","title": "Cantidad"}
+        }
+    };
+    vegaEmbed('#vis41', pregun41);
     const pregun5 = {
         "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
         "data": {"url": "https://raw.githubusercontent.com/ElDavidLasso/PracticaB2PROG/master/data/provTrPesado.csv"},
@@ -121,8 +192,31 @@
                 "title": "Clases"
             }
         }
-    }
+    };
     vegaEmbed('#vis5', pregun5);
+
+    const pregun51 = {
+        "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+        "data": {"url": "https://raw.githubusercontent.com/ElDavidLasso/PracticaB2PROG/master/data/provTrPesado.csv"},
+        "width": 250,
+        "height": 350,
+        "mark": {"type": "circle"},
+        "encoding": {
+            "x": {"field": "provincia",
+                "type": "nominal",
+                "title": "Provincias"
+            },
+            "y": {"aggregate":"sum",
+                "field": "cantidad",
+                "title": "Cantidad"
+            },
+            "color": {"field": "clase",
+                "type": "nominal",
+                "title": "Clases"
+            }
+        }
+    };
+    vegaEmbed('#vis51', pregun51);
 </script>
 </body>
 </html>
